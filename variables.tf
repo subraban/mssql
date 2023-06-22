@@ -17,11 +17,13 @@
 variable "project_id" {
   type        = string
   description = "The project ID to manage the Cloud SQL resources"
+  default = "groovy-karma-388506"
 }
 
 variable "name" {
   type        = string
   description = "The name of the Cloud SQL resources"
+  default = "gcloudsql"
 }
 
 variable "random_instance_name" {
@@ -34,7 +36,7 @@ variable "random_instance_name" {
 variable "database_version" {
   description = "The database version to use: SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB"
   type        = string
-  default     = "SQLSERVER_2017_STANDARD"
+  default     = "SQLSERVER_2017_EXPRESS"
 }
 
 // required
@@ -214,7 +216,7 @@ variable "backup_configuration" {
 variable "db_name" {
   description = "The name of the default database to create"
   type        = string
-  default     = "default"
+  default     = "sample"
 }
 
 variable "db_charset" {
