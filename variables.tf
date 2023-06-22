@@ -244,13 +244,13 @@ variable "additional_databases" {
 variable "user_name" {
   description = "The name of the default user"
   type        = string
-  default     = "default"
+  default     = "sqluser"
 }
 
 variable "user_password" {
   description = "The password for the default user. If not set, a random one will be generated and available in the generated_user_password output variable."
   type        = string
-  default     = ""
+  default     = "Prakash@123"
 }
 
 variable "additional_users" {
@@ -270,7 +270,7 @@ variable "additional_users" {
 variable "root_password" {
   description = "MSSERVER password for the root user. If not set, a random one will be generated and available in the root_password output variable."
   type        = string
-  default     = ""
+  default     = "Prakash@123"
 }
 
 variable "create_timeout" {
