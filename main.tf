@@ -11,10 +11,10 @@ resource "google_sql_database_instance" "instance" {
   deletion_protection = false
 }
 
-resource "google_sql_database" "default" {
+resource "google_sql_database" "gcloudsql" {
   name       = "gcloudsql"
   
-  instance   = google_sql_database_instance.default.name
+  instance   = google_sql_database_instance.instance.name
   charset    = var.db_charset
   collation  = var.db_collation
   depends_on = [null_resource.module_depends_on, google_sql_database_instance.default, google_sql_user.default, google_sql_user.additional_users]
