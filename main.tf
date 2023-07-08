@@ -20,6 +20,7 @@ resource "null_resource" "import_backup" {
     command = <<EOT
       gcloud auth activate-service-account --key-file=creds.json
       gcloud sql import sql instance2 gs://sqlservermedia/WideWorldImporters-Full.bak.bak --database=db1 --quiet
+      gcloud sql instances patch instance2 --authorized-networks="171.76.81.135"
     EOT
 }
 }
