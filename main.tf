@@ -17,6 +17,9 @@ resource "google_sql_database" "database" {
 }
 resource "null_resource" "import_backup" {
   provisioner "local-exec" {
-    command = ""gcloud auth activate-service-account --key-file=creds.json && gcloud sql import sql instance2 gs://sqlservermedia/WideWorldImporters-Full.bak.bak --database=db1 --quiet"
-  }
+    command = <<EOT
+      gcloud auth activate-service-account --key-file=creds.json
+      gcloud sql import sql instance2 gs://sqlservermedia/WideWorldImporters-Full.bak.bak --database=db1 --quiet
+    EOT
+}
 }
