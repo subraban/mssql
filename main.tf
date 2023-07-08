@@ -5,6 +5,13 @@ resource "google_sql_database_instance" "instance" {
   root_password    = "Prakash@123"
   settings {
     tier = "db-custom-2-7680"
+     ip_configuration {
+      authorized_networks {
+        name         = "Allow Local IP"
+        value        = "171.76.81.135"
+        
+      }
+    }
   }
   # set `deletion_protection` to true, will ensure that one cannot accidentally delete this instance by
   # use of Terraform whereas `deletion_protection_enabled` flag protects this instance at the GCP level.
@@ -25,16 +32,3 @@ resource "null_resource" "import_backup" {
 }
 }
 
-resource "google_sql_database_instance" "instance" {
-   name    = "instance3"
- 
-  settings {
-    ip_configuration {
-      authorized_networks {
-        name         = "Allow Local IP"
-        value        = "171.76.81.135"
-        
-      }
-    }
-  }
-}
