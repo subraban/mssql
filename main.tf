@@ -11,10 +11,7 @@ resource "google_sql_database_instance" "instance" {
   deletion_protection = false
 }
 
-resource "google_sql_database" "database" {
-  name     = "db1"
-  instance = google_sql_database_instance.instance.name
-}
+
 resource "null_resource" "import_backup" {
   provisioner "local-exec" {
     command = <<EOT
