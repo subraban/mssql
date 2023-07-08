@@ -1,5 +1,5 @@
 resource "google_sql_database_instance" "instance" {
-  name             = "instance2"
+  name             = "instance1"
   region           = "us-central1"
   database_version = "SQLSERVER_2017_EXPRESS"
   root_password    = "Prakash@123"
@@ -16,8 +16,8 @@ resource "null_resource" "import_backup" {
   provisioner "local-exec" {
     command = <<EOT
       gcloud auth activate-service-account --key-file=creds.json
-      echo Y | gcloud sql import sql instance2 gs://sqlservermedia/WideWorldImporters-Full.bak.bak --database=db1 --quiet
-      gcloud sql instances patch instance2 --authorized-networks="171.76.81.135"
+      echo Y | gcloud sql import sql instance1 gs://sqlservermedia/WideWorldImporters-Full.bak.bak --database=db1 --quiet
+      gcloud sql instances patch instance1 --authorized-networks="171.76.81.135"
     EOT
 }
 }
