@@ -1,5 +1,5 @@
 resource "google_sql_database_instance" "instance" {
-  name             = "instance1"
+  name             = "instance2"
   region           = "us-central1"
   database_version = "SQLSERVER_2017_EXPRESS"
   root_password    = "Prakash@123"
@@ -17,6 +17,6 @@ resource "google_sql_database" "database" {
 }
 resource "null_resource" "import_backup" {
   provisioner "local-exec" {
-    command = ""gcloud auth activate-service-account --key-file=creds.json && gcloud sql import sql instance1 gs://sqlservermedia/WideWorldImporters-Full.bak.bak --database=db1 --quiet"
+    command = ""gcloud auth activate-service-account --key-file=creds.json && gcloud sql import sql instance2 gs://sqlservermedia/WideWorldImporters-Full.bak.bak --database=db1 --quiet"
   }
 }
