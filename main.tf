@@ -8,7 +8,7 @@ resource "google_sql_database_instance" "instance" {
      ip_configuration {
       authorized_networks {
         name         = "Allow Local IP"
-        value        = "171.76.81.135"
+        value        = "171.76.82.126"
         
       }
     }
@@ -18,17 +18,4 @@ resource "google_sql_database_instance" "instance" {
   deletion_protection = false
 }
 
-resource "google_sql_database" "database" {
-  name     = "db1"
-  instance = google_sql_database_instance.instance.name
-}
-resource "null_resource" "import_backup" {
-  provisioner "local-exec" {
-    command = <<EOT
-      gcloud auth activate-service-account --key-file=creds.json
-      gcloud sql import sql instance1 gs://sqlservermedia/WideWorldImporters-Full.bak.bak --database=db1 --quiet
-     
-    EOT
-}
-}
 
